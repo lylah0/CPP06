@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:16:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2026/02/10 15:59:52 by lylrandr         ###   ########.fr       */
+/*   Updated: 2026/02/10 16:40:14 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ ScalarConverter::~ScalarConverter(){
 }
 
 ScalarConverter::LiteralType	ScalarConverter::detectType(const std::string& s){
-
+	if(s.compare("nan") || s.compare("+inf") || s.compare("-inf")
+						|| s.compare("+inff") || s.compare("-inff"))
+		LiteralType = INVALID;
 }
 
 void	ScalarConverter::convert(const std::string& literal){
