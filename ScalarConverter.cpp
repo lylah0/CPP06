@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:16:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2026/02/17 18:55:25 by lylrandr         ###   ########.fr       */
+/*   Updated: 2026/02/17 19:16:23 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,38 @@ ScalarConverter::LiteralType	ScalarConverter::detectType(const std::string& s){
 		return (INVALID);
 }
 
-void	ScalarConverter::convert(const std::string& literal){
+static double	convertDouble(const std::string& d){
 
+}
+
+static float	convertFloat(const std::string& f){
+
+}
+
+static char	convertChar(const std::string& c){
+	char	a;
+	return (a = c[1]);
+}
+
+static int	convertInt(const std::string& i){
+
+}
+
+void	ScalarConverter::convert(const std::string& literal){
+	LiteralType	s = detectType(literal);
+
+	switch (s){
+	case DOUBLE:
+		convertDouble(literal);
+	case FLOAT:
+		convertFloat(literal);
+	case CHAR:
+		convertChar(literal);
+	case INT:
+		convertInt(literal);
+	case INVALID:
+		std::cout << "Invalid string." << std::endl;
+	default:
+		break;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:30:25 by lylrandr          #+#    #+#             */
-/*   Updated: 2026/02/17 18:55:22 by lylrandr         ###   ########.fr       */
+/*   Updated: 2026/02/17 19:00:40 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ class ScalarConverter{
 		ScalarConverter& operator=(const ScalarConverter&);
 		~ScalarConverter();
 
-		static LiteralType	detectType(const std::string& s);
-
 	public :
 
-		static void	convert(const std::string& literal);
+		static void			convert(const std::string& literal);
+		static LiteralType	detectType(const std::string& s);
+
 };
 
 #endif
