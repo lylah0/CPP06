@@ -6,11 +6,11 @@
 #    By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 18:26:12 by lylrandr          #+#    #+#              #
-#    Updated: 2026/02/09 18:41:45 by lylrandr         ###   ########.fr        #
+#    Updated: 2026/02/10 16:12:57 by lylrandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScalarConverter
+NAME = convert
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
