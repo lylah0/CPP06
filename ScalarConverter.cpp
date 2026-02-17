@@ -6,15 +6,11 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:16:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2026/02/17 17:06:44 by lylrandr         ###   ########.fr       */
+/*   Updated: 2026/02/17 18:55:25 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstdlib>
-#include <limits>
-#include <cmath>
-#include <cctype>
+
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter(){
@@ -27,6 +23,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter&){
 
 ScalarConverter&	ScalarConverter::operator=(const ScalarConverter&){
 	std::cout << "ScalarConverter assignment operator= called." << std::endl;
+	return(*this);
 }
 
 ScalarConverter::~ScalarConverter(){
@@ -94,14 +91,33 @@ static bool	IsDouble(const std::string& s)
 	return (true);
 }
 
+static bool	IsInt(const std::string& s){
+	bool	hasDigit = false;
+	size_t	i = 0;
+
+	if (s.empty())
+		return (false);
+	if (s[0] == '+' || s[0] == '-'){
+		if (s.length() == 1)
+			return (false);
+		i++;
+	}
+	for(; i < s.length(); i++){
+		if (!isdigit(s[i]))
+			return (false);
+		hasDigit = true;
+	}
+	return (hasDigit);
+}
+
 ScalarConverter::LiteralType	ScalarConverter::detectType(const std::string& s){
 	if (s == "+inf" || s == "-inf" || s == "nan" || IsDouble(s))
 		return (DOUBLE);
 	if (s == "+inff" || s == "-inff" || s == "nanf" || IsFloat(s))
 		return (FLOAT);
-	if (s.length() == 3 && s[0] == '\'' && s[3] == '\'')
+	if (s.length() == 3 && s[0] == '\'' && s[2] == '\'' && isprint(s[1]))
 		return (CHAR);
-	if ()
+	if (IsInt(s))
 		return (INT);
 	else
 		return (INVALID);
