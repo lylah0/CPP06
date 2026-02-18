@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:16:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2026/02/18 15:34:44 by lylrandr         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:21:49 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,22 @@ ScalarConverter::LiteralType	ScalarConverter::detectType(const std::string& s){
 		return (INVALID);
 }
 
-void	printAll(double s){
-	std::isinf(s);
+static void	printAll(double value){
+	//CHAR
+	if (std::isnan(value) || std::isinf(value) || value < 0 || value > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (!isprint(value))
+		std::cout << "char: non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
+	//INT
+	if (std::isnan(value) || std::isinf(value) || value > std::numeric_limits<int>::max()
+		|| value < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(value) << std::endl;
+	std::cout << "float: " << static_cast<float>(value) << std::endl;
+	std::cout << "double: " << value << std::endl;
 }
 
 void	ScalarConverter::convert(const std::string& literal){
@@ -153,9 +167,8 @@ void	ScalarConverter::convert(const std::string& literal){
 			value = static_cast<double>(std::atoi(literal.c_str()));
 			break;
 		}
-		default:{
+		default:
 			return;
 	}
 	printAll(value);
-	}
 }
