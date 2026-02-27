@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:16:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2026/02/18 16:21:49 by lylrandr         ###   ########.fr       */
+/*   Updated: 2026/02/27 15:13:22 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter&){
 	std::cout << "ScalarConverter copy constructor called." << std::endl;
 }
 
-ScalarConverter&	ScalarConverter::operator=(const ScalarConverter&){
+ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& rhs){
 	std::cout << "ScalarConverter assignment operator= called." << std::endl;
 	return(*this);
 }
